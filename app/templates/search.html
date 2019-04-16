@@ -1,36 +1,55 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/static/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/main.css"/>
+        <link rel="stylesheet" href="/static/all.css"/>
     </head>
     <body>
         <div class="topcorner">
             <p>Project Name: {{ name }}</p>
             <p>Student Name: ({{ netid }})</p>
         </div>
-        <form class="form-inline global-search">
+        <form class="global-search">
             <h1 style="font-size: 55px; font-family:Futura; color: #4285F4">
-                C
-                <font color=#EA4335>S</font>
-                <font color=#FBBC05>4</font>
-                3
-                <font color=#34A853>0</font>
-                <font color=#EA4335>0</font>
+                
+                <font color=#EA4335>4300</font>
+                <font color=#FBBC05>K</font>
+                
+                <font color=#34A853>Drama</font>
+                <font color=#EA4335>Queen</font>
             </h1>
 
             <br><br>
 
             <div class="form-group">
-                <input id="input" type="text" name="search" class="form-control" placeholder="Your Input">
+                <label for = "enjoyed">Shows That you Enjoyed:</label>
+                <input id="enjoyed" type="text" name="enjoyed" class="form-control" placeholder="Your Input">
             </div>
-            <button type="submit" class="btn btn-info"> Go! </button>
+            <div class="form-group">
+                    <label for = "disliked">Shows That you Disliked:</label>
+                <input id="disliked" type="text" name="disliked" class="form-control" placeholder="Your Input">
+            </div>
+            <div class="form-group">
+                    <label for = "prefered_genres">Your Prefered Genres:</label>
+                <input id="prefered_genres" type="text" name="prefered_genres" class="form-control" placeholder="Your Input">
+            </div>
+            <div class="form-group">
+                    <label for = "prefered_networks">Your Prefered Network:</label>
+                <input id="prefered_networks" type="text" name="prefered_networks" class="form-control" placeholder="Your Input">
+            </div>  
+            <div> <button type="submit" class="btn btn-info"> Go! </button></div>
+           
         </form>
         <form class="form-inline global-search">
-        {% if data %}
+        {% if not output.empty %}
             <h1>{{output_message}}</h1>
-            {% for d in data %}
+            {% for y in output %}
                 <br>
-                <p>{{d}}</p>
+                <div><p>{{  y[y.index('Drama Title'): y.index(',')] }}</p></div>
+                <div><p>{{  y[y.index('Summary'): y.index(',  Total Similarity')] }}</p></div>
+                <div><p>{{  y[y.index('Total Similarity') :] }}</p></div>
+                <p></p>
+                <hr>
             {% endfor %}
         {% endif %}
         </form>
